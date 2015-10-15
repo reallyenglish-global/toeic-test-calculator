@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
-  s.name        = 'toeic_test_calculator'
-  s.version     = '0.0.0'
+  s.name        = 'toeic-test-calculator'
+  s.version     = '0.0.1'
   s.date        = '2015-10-02'
   s.summary     = "Computes TOEIC Test score."
   s.description = "Takes a TOEIC Test percentage an converts it into a TOEIC Test score for reading an listening tests."
