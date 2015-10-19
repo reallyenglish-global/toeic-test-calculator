@@ -4,8 +4,6 @@ module TOEICTestCalculator
 
     def initialize(rational_score)
       @score = round_5(rational_score)
-      #@range = range.join('-'s
-      #@test = test.to_s
     end
 
     private

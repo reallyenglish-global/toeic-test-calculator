@@ -9,9 +9,9 @@ module TOEICTestCalculator
       puts "REscore,TOEIC Score, range"
       (0..50).each do |p|
         p = p*2
-        score = TOEICTestCalculator::ScaledScore.new(TOEICTestCalculator.for(p, test_type)).score
-        low =TOEICTestCalculator::ScaledScore.new(TOEICTestCalculator.for(p-6, test_type)).score
-        high =TOEICTestCalculator::ScaledScore.new(TOEICTestCalculator.for(p+6, test_type)).score
+        score = TOEICTestCalculator.for(p, test_type)
+        low = TOEICTestCalculator.for(p-6, test_type)
+        high = TOEICTestCalculator.for(p+6, test_type)
         range = low == high ? high.to_s : "#{low}-#{high}"
         puts "#{p/2},#{score},#{range}"
       end

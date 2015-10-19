@@ -12,6 +12,7 @@ module TOEICTestCalculator
       test_type.split('_').map(&:capitalize).join
     ]
     test = test_name.inject(Object) {|o,c| o.const_get c}
-    TOEICTestCalculator::ScaleScore.for(score, test)
+    score_rational = TOEICTestCalculator::ScaleScore.for(score, test)
+    TOEICTestCalculator::ScaledScore.new(score_rational).score
   end
 end
