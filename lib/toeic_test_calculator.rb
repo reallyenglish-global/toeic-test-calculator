@@ -6,7 +6,12 @@ module TOEICTestCalculator
   require_relative 'toeic_test_calculator/tests'
 
   def self.for(score, test_type)
-    test = ['TOEICTestCalculator', 'Tests', test_type].inject(Object) {|o,c| o.const_get c}
+    test_name = [
+      'TOEICTestCalculator',
+      'Tests',
+      test_type.split('_').map(&:capitalize).join
+    ]
+    test = test_name.inject(Object) {|o,c| o.const_get c}
     TOEICTestCalculator::ScaleScore.for(score, test)
   end
 end
