@@ -16,8 +16,4 @@ module TOEICTestCalculator
     score_rational = TOEICTestCalculator::ScaleScore.for(score, test)
     TOEICTestCalculator::ScaledScore.new(score_rational).score
   end
-
-  def self.for_score_detail(score_detail)
-    TOEICTestCalculator::ScoreDetail.hash(score_detail)
-  end
 end
