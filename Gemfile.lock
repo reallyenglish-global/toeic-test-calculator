@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    toeic-test-calculator (0.1.0)
+    toeic-test-calculator (0.1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -25,5 +25,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rspec
+  rspec (>= 3.0.0)
   toeic-test-calculator!

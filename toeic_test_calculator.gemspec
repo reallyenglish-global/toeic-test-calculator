@@ -7,5 +7,5 @@ Gem::Specification.new do |s|
   s.authors     = ["Tim Peat"]
   s.email       = 'timp@reallyenglish.com'
   s.files       = ["lib/toeic_test_calculator.rb"]
-  s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec", '>= 3.0.0'
 end
