@@ -41,7 +41,7 @@ module TOEICTestCalculator
     end
 
     def scaled_score_for_score(score)
-      ((score*(0.223+9.308))*2).round(-1)/2
+      ((score.to_i*(0.223+9.308))*2).round(-1)/2
     end
 
     def band
