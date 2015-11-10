@@ -26,18 +26,18 @@ describe TOEICTestCalculator::ScoreDetail do
               category: 'reading', 
               score: 20, 
               max_score: 50, 
-              scaled_score: 125
+              scaled_score: 190
             }, 
             {
               category: 'listening', 
               score: 20, 
               max_score: 50, 
-              scaled_score: 155
+              scaled_score: 190
             }
           ], 
           total: {
-            scaled_score: 280, 
-            band: "240-315"
+            scaled_score: 380, 
+            band: "350-395"
           }
         } 
       )

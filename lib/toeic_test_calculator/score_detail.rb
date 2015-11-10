@@ -1,4 +1,8 @@
 module TOEICTestCalculator
+  #
+  # NB do not merge this into master. This branch is a temporary implementation
+  # of TOEIC scoring.
+  #
   class ScoreDetail
     def initialize(score_detail)
       @scores = score_detail.fetch(:scores)
@@ -23,45 +27,54 @@ module TOEICTestCalculator
       scaled_scores.inject(:+)
     end
 
-    def max_total
-      max_scores.inject(:+)
-    end
-
-    def min_total
-      min_scores.inject(:+)
-    end
-
     private
 
     attr_reader :scores
 
     def process_scores
       scores.each do |score|
-        category = score.fetch(:category)
-        percentage = Rational(score.fetch(:score), score.fetch(:max_score))*100.0
-        scaled_score = TOEICTestCalculator.for(percentage, category)
+        scaled_score = scaled_score_for_score(score.fetch(:score))
         scaled_scores << scaled_score
-        max_scores << TOEICTestCalculator.for(percentage+3, category)
-        min_scores << TOEICTestCalculator.for(percentage-3, category)
 
         score[:scaled_score] = scaled_score
       end
     end
 
+    def scaled_score_for_score(score)
+      ((score*(0.223+9.308))*2).round(-1)/2
+    end
+
     def band
-      [min_total, max_total].join '-'
+      fetch_band.last
+    end
+
+    def fetch_band
+      {
+        45   => "10-45",
+        95  => "50-95",
+        145 => "100~145",
+        195 => "150-195",
+        245 => "200-245",
+        295 => "250-295",
+        345 => "300-345",
+        395 => "350-395",
+        445 => "400-445",
+        495 => "450-495",
+        545 => "500-545",
+        595 => "550-595",
+        645 => "600-645",
+        695 => "650-695",
+        745 => "700-745",
+        795 => "750-795",
+        845 => "800-845",
+        895 => "850-895",
+        945 => "900-945",
+        990 => "950-990"
+      }.find {|k,v| k >= total_scaled_score}
     end
 
     def scaled_scores
       @scaled_scores ||= []
-    end
-
-    def max_scores
-      @max_scores ||= []
-    end
-
-    def min_scores
-      @min_scores ||= []
     end
   end
 end
