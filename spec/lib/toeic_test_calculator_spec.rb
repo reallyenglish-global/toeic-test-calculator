@@ -51,4 +51,14 @@ describe TOEICTestCalculator do
       puts described_class::ScoreConversionChart.csv('reading')
     end
   end
+
+  describe '::score_table' do
+    describe 'produce score table as JSON' do
+      it 'returns score of 5' do
+        scores = described_class::score_table
+        require 'json'
+        puts scores.to_json
+      end
+    end
+  end
 end

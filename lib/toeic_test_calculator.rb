@@ -16,4 +16,16 @@ module TOEICTestCalculator
     score_rational = TOEICTestCalculator::ScaleScore.for(score, test)
     TOEICTestCalculator::ScaledScore.new(score_rational).score
   end
+
+  def self.score_table
+    scores = []
+    (0..50).each do |listening_score|
+      (0..50).each do |reading_score|
+        score={scores:[{category:"listening",score:listening_score,max_score:50},{category:"reading",score:reading_score,max_score:50}]}
+        score_detail = TOEICTestCalculator::ScoreDetail.hash(score)
+        scores << score_detail
+      end
+    end
+    scores
+  end
 end
