@@ -13,6 +13,18 @@ module TOEICTestCalculator
       new(score_detail).hash
     end
 
+    def self.score_table
+      scores = []
+      (0..50).each do |listening_score|
+        (0..50).each do |reading_score|
+          score={scores:[{category:"listening",score:listening_score,max_score:50},{category:"reading",score:reading_score,max_score:50}]}
+          score_detail = self.hash(score)
+          scores << score_detail
+        end
+      end
+      scores
+    end
+
     def hash
       {
         scores: scores,

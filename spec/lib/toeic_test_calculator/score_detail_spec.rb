@@ -43,4 +43,13 @@ describe TOEICTestCalculator::ScoreDetail do
       )
     end
   end
+
+  describe '::score_table' do
+    it 'embellishes detail with toeic scores' do
+      scores = described_class::score_table
+      require 'json'
+      puts scores.to_json
+    end
+  end
+
 end
